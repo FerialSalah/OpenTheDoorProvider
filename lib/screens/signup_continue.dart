@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_openthedoorprovider/utili/apiProvider.dart';
 import 'package:flutter_openthedoorprovider/utili/helpers.dart';
@@ -61,7 +62,7 @@ class _SignUpFinalPageState extends State<SignUpFinalPage> {
   static File img;
   Widget profileImage(BuildContext context) {
     return Positioned(
-        top: MediaQuery.of(context).size.height/30,
+        top: MediaQuery.of(context).size.height / 30,
         left: 100,
         right: 100,
         child: Container(
@@ -176,23 +177,29 @@ class _SignUpFinalPageState extends State<SignUpFinalPage> {
                             SizedBox(
                               height: 10,
                             ),
-                            Row(children: <Widget>[
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
                               Flexible(
-                                child: Text(
-                                  birthDateInString,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 40.0),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  cursorColor: Color(0xFFC89C17),
+                                  decoration: InputDecoration(
+                                      labelText: 'Birth date',
+                                      labelStyle: TextStyle(fontSize: 15.0),
+                                      hasFloatingPlaceholder: true,
+                                      prefixIcon: Icon(Icons.calendar_today,
+                                          color: Color(0xFFC89C17)),
+                                      counterStyle: TextStyle(
+                                          color: Color(0xFFC89C17))),
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
-                                height: 10.0,
-                              ),
+
                               IconButton(
                                   icon: Icon(
-                                    Icons.calendar_today,
+                                    Icons.date_range,
                                     size: 40.0,
+                                    color: Color(0xFFC89C17),
                                   ),
                                   onPressed: () async {
                                     final datePick = await showDatePicker(
@@ -227,13 +234,168 @@ class _SignUpFinalPageState extends State<SignUpFinalPage> {
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                 Radio(value: 1, groupValue:1, onChanged:null,activeColor: Colors.amber,)
-
+                                Radio(
+                                  value: 1,
+                                 // groupValue:,
+                                  onChanged: (_) {},
+                                  //activeColor: Colors.amber,
+                                ),
+                                Text('Male'),
+                                Radio(
+                                  value: 2,
+                                 // groupValue: 2,
+                                  onChanged: (_) {},
+                                  activeColor: Colors.amber,
+                                ),
+                                Text('Female')
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  "Are You?",
+                                  style: TextStyle(fontStyle: FontStyle.normal),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Radio(
+                                  value: 1,
+                                 // groupValue: 1,
+                                  onChanged: (_) {},
+                                  activeColor: Colors.amber,
+                                ),
+                                Text('Citizan'),
+                                Radio(
+                                  value: 1,
+                                  //groupValue: 1,
+                                  onChanged: (_) {},
+                                  activeColor: Colors.amber,
+                                ),
+                                Text('Resident')
+                              ],
+                            ),
+                            FocusScope(
+                              node: FocusScopeNode(),
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                cursorColor: Color(0xFFC89C17),
+                                decoration: InputDecoration(
+                                    hintText:'Residence or status card' ,
+                                    labelStyle: TextStyle(fontSize: 15.0),
+                                    hasFloatingPlaceholder: true,
+                                    prefixIcon: Icon(Icons.add,
+                                        color: Color(0xFFC89C17)),
+                                    counterStyle:
+                                        TextStyle(color: Color(0xFFC89C17))),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  "Are You?",
+                                  style: TextStyle(fontStyle: FontStyle.normal),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Radio(
+                                  value: 1,
+                                 // groupValue: 1,
+                                  onChanged: (_) {},
+                                  activeColor: Colors.amber,
+                                ),
+                                Text('Employee'),
+                                Radio(
+                                  value: 1,
+                                  //groupValue: 1,
+                                  onChanged: (_) {},
+                                  activeColor: Colors.amber,
+                                ),
+                                Text('Non_employee')
                               ],
                             ),
                             SizedBox(
                               height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Flexible(
+                                  flex: 1,
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Color(0xFFC89C17),
+                                    decoration: InputDecoration(
+                                        labelText: 'Place of employment',
+                                        labelStyle: TextStyle(fontSize: 15.0),
+                                        hasFloatingPlaceholder: true,
+                                        prefixIcon: Icon(Icons.place,
+                                            color: Color(0xFFC89C17)),
+                                        counterStyle: TextStyle(
+                                            color: Color(0xFFC89C17))),
+                                  ),
+                                ),
+                                IconButton(
+                                    icon: Icon(
+                                      Icons.my_location,
+                                      size: 40.0,
+                                      color: Color(0xFFC89C17),
+                                    ),
+                                    onPressed: null)
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  " Evidence Files:",
+                                  style: TextStyle(fontStyle: FontStyle.normal),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text('Arecent Personal Image'),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.cloud_upload,
+                                    color: Color(0xFFC89C17),
+                                    size: 30.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text('Image of residence'),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.cloud_upload,
+                                    color: Color(0xFFC89C17),
+                                    size: 30.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.0,
                             ),
                             FlatButton(
                               child: Text(AppLocalizations.of(context)

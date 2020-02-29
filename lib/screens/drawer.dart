@@ -7,7 +7,6 @@ import 'about_us_page.dart';
 import '../map.dart';
 import 'contact_us_page.dart';
 import 'history_page.dart';
-
 import 'invite_friend_page.dart';
 import 'language_page.dart';
 import 'notification_page.dart';
