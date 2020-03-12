@@ -5,6 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 
+import 'localization.dart';
+
 class MapViewScreen extends StatefulWidget {
   @override
   State<MapViewScreen> createState() => MapViewScreenState();
@@ -17,7 +19,7 @@ class MapViewScreenState extends State<MapViewScreen> {
   String address = "";
   static LatLng postion = LatLng(0, 0);
   CameraPosition myPostion =
-      CameraPosition(target: postion, zoom: 19.151926040649414);
+  CameraPosition(target: postion, zoom: 19.151926040649414);
 
   Set<Marker> markers = Set();
 
@@ -48,13 +50,13 @@ class MapViewScreenState extends State<MapViewScreen> {
   }
 
   Future search(double longitude, double latitude) async {
-    var first = addresses.first;
-  //  final coordinates = new Coordinates(longitude, latitude);
-  //  addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    first = addresses.first;
+    var first;
+    //  final coordinates = new Coordinates(longitude, latitude);
+    //  addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    //first = addresses.first;
     final coordinates = new Coordinates(longitude, latitude);
     addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-  //  var first = addresses.first;
+    //  var first = addresses.first;
     address = "${first.featureName} : ${first.addressLine}";
     print(address);
   }
@@ -71,7 +73,7 @@ class MapViewScreenState extends State<MapViewScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           getCurrentLocation();
-          
+
         },
         child: Icon(Icons.location_searching),
         backgroundColor: Colors.yellow,
@@ -113,15 +115,15 @@ class MapViewScreenState extends State<MapViewScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: FlatButton(
-                  child: Text("اختار خدمة"),
+                  child: Text('choose orders'),
                   color: Color(0xFFC89C17),
                   textColor: Colors.white,
                   padding:
-                      EdgeInsets.only(left: 38, right: 38, top: 15, bottom: 15),
+                  EdgeInsets.only(left: 38, right: 38, top: 15, bottom: 15),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => SelectProvider()));
@@ -135,3 +137,4 @@ class MapViewScreenState extends State<MapViewScreen> {
     );
   }
 }
+

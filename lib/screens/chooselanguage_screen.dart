@@ -110,7 +110,7 @@ class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SignInScreen()));
+                      builder: (context) => MyHomePage()));
                     })
                   },
                   textColor: Color(0xFFC89C17),
