@@ -7,14 +7,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiProvider {
   static String baseUrl = "http://openthedoor.tawartec.com/api/";
-  static String login = "login";
-  static String register = "register";
+  static String login = "provider/login";
+  static String register = "provider/register";
   static String userinfo = "userinfo";
   static String updateprofile = "updateprofile";
   static String changepassword = "changepassword";
   static String appInfo = "appinfo";
   static String aboutUs = "aboutus";
-  static String code = "sendcode";
+  static String code = "providersendcode";
 
   //////////////////////////////
   //   User related requests  //
@@ -55,11 +55,11 @@ class ApiProvider {
     var data = {'phone': phone, 'password': password};
     Response response = await Dio().post("$baseUrl$login", data: data);
     print("======> $response");
-    prefs.setInt('id', response.data['user']['id']);
-    prefs.setString('token', response.data['user']['api_token']);
-    prefs.setString('email', response.data['user']['email']);
-    prefs.setString('name', response.data['user']['name']);
-    prefs.setString('userAvatar', response.data['user']['user_image']);
+    prefs.setInt('id', response.data['providerinfo']['id']);
+    prefs.setString('token', response.data['providerinfo']['api_token']);
+    prefs.setString('email', response.data['providerinfo']['email']);
+    prefs.setString('name', response.data['providerinfo']['name']);
+    prefs.setString('userAvatar', response.data['providerinfo']['user_image']);
     print("========");
     print("======> $response");
     return 200;
